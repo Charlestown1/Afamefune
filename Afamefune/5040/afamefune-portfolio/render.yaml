@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: afamefune
+    runtime: static
+    buildCommand: echo "No build step"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /css/*
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /js/*
+        name: Cache-Control
+        value: public, max-age=86400
